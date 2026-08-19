@@ -25,4 +25,15 @@ class CharacterTest {
 
         assertThat(hero.isAlive(), is(true));
     }
+
+    @Test
+    void dealingDamageReducesTargetHealth() {
+        Character attacker = new Character();
+        Character target = new Character();
+
+        attacker.dealDamage(target, 100);
+
+        assertThat(target.getHealth(), is(900));
+
+    }
 }

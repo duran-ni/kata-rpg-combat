@@ -18,5 +18,10 @@ public class Character {
         return alive;
     }
 
+    public void dealDamage(Character target, int damage) {
+        target.health -= damage;
+        }
+    }
 
-}
+
+
