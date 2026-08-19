@@ -18,4 +18,11 @@ class CharacterTest {
 
         assertThat(hero.getLevel(), is(1));
     }
+
+    @Test
+    void newCharacterStartsAlive() {
+        Character hero = new Character();
+
+        assertThat(hero.isAlive(), is(true));
+    }
 }
