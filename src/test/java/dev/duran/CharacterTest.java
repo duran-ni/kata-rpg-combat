@@ -71,4 +71,16 @@ class CharacterTest {
         assertThat(target.getHealth(), is(1000));
     }
 
+    @Test
+    void deadCharacterCannotBeHealed() {
+        Character healer = new Character();
+        Character target = new Character();
+        healer.dealDamage(target, 1500);
+
+        healer.heal(target, 100);
+
+        assertThat(target.getHealth(), is(0));
+        assertThat(target.isAlive(), is(false));
+    }
+
 }

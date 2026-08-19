@@ -31,9 +31,14 @@ public class Character {
     }
 
     public void heal(Character target, int amount) {
+        if (!target.alive) {
+            return;
+        }
+
         int newHealth = target.health + amount;
         target.health = Math.min(newHealth, 1000);
-        }
+
     }
 
+}
 
