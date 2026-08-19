@@ -11,4 +11,11 @@ class CharacterTest {
 
         assertThat(hero.getHealth(), is(1000));
     }
+
+    @Test
+    void newCharacterStartsAtLevelOne() {
+        Character hero = new Character();
+
+        assertThat(hero.getLevel(), is(1));
+    }
 }
