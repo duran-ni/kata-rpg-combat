@@ -55,8 +55,20 @@ class CharacterTest {
 
         healer.dealDamage(target, 300);
 
-        healer.heal(target, 100); 
+        healer.heal(target, 100);
 
         assertThat(target.getHealth(), is(800));
     }
+
+    @Test
+    void healingCannotExceedMaxHealth() {
+        Character healer = new Character();
+        Character target = new Character();
+        healer.dealDamage(target, 50);
+
+        healer.heal(target, 200);
+
+        assertThat(target.getHealth(), is(1000));
+    }
+
 }
