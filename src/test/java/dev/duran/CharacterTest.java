@@ -36,4 +36,15 @@ class CharacterTest {
         assertThat(target.getHealth(), is(900));
 
     }
+
+    @Test
+    void damageExceedingHealthKillsTarget() {
+        Character attacker = new Character();
+        Character target = new Character();
+
+        attacker.dealDamage(target, 1500);
+
+        assertThat(target.getHealth(), is(0));
+        assertThat(target.isAlive(), is(false));
+    }
 }

@@ -19,9 +19,14 @@ public class Character {
     }
 
     public void dealDamage(Character target, int damage) {
-        target.health -= damage;
+        int newHealth = target.health - damage;
+
+        if (newHealth <= 0) {
+            target.health = 0;
+            target.alive = false;
+        } else {
+            target.health = newHealth;
+
         }
     }
-
-
-
+}
