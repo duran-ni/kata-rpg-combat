@@ -23,7 +23,12 @@ public class Character {
             return;
         }
 
-        int newHealth = target.health - damage;
+        int actualDamage = damage;
+        if (target.level - this.level >=5) {
+            actualDamage = damage / 2;
+        }
+
+        int newHealth = target.health - actualDamage;
 
         if (newHealth <= 0) {
             target.health = 0;

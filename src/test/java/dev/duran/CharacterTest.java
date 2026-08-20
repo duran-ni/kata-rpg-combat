@@ -112,4 +112,17 @@ class CharacterTest {
         assertThat(hero.getLevel(), is(2));
     }
 
+    @Test
+    void damageIsReducedWhenTargetIsFiveOrMoreLevelsAbove() {
+        Character attacker = new Character();
+        Character target = new Character();
+        for (int i = 0; i < 5; i++) {
+            target.levelUp();
+        }
+
+        attacker.dealDamage(target, 100);
+
+        assertThat(target.getHealth(), is(950));
+    }
+
 }
