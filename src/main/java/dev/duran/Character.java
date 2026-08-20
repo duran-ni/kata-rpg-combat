@@ -5,6 +5,19 @@ public class Character {
     private int health = 1000;
     private int level = 1;
     private boolean alive = true;
+    private final int range;
+
+    private Character(FighterType fighterType) {
+        this.range = fighterType == FighterType.MELEE ? 2 : 20;
+    }
+
+    public static Character createMeleeFighter() {
+        return new Character(FighterType.MELEE);
+    }
+
+    public static Character createRangedFighter() {
+        return new Character(FighterType.RANGED);
+    }
 
     public int getHealth() {
         return health;
@@ -16,6 +29,14 @@ public class Character {
 
     public boolean isAlive() {
         return alive;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void levelUp() {
+        level++;
     }
 
     public void dealDamage(Character target, int damage) {
@@ -55,8 +76,5 @@ public class Character {
 
     }
 
-    public void levelUp() {
-        level++;
-    }
 
 }

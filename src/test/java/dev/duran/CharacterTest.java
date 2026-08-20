@@ -7,29 +7,29 @@ import static org.hamcrest.Matchers.is;
 class CharacterTest {
     @Test
     void newCharacterStartsWithFullHealth() {
-        Character hero = new Character();
+        Character hero = Character.createMeleeFighter();
 
         assertThat(hero.getHealth(), is(1000));
     }
 
     @Test
     void newCharacterStartsAtLevelOne() {
-        Character hero = new Character();
+        Character hero = Character.createMeleeFighter();
 
         assertThat(hero.getLevel(), is(1));
     }
 
     @Test
     void newCharacterStartsAlive() {
-        Character hero = new Character();
+        Character hero = Character.createMeleeFighter();
 
         assertThat(hero.isAlive(), is(true));
     }
 
     @Test
     void dealingDamageReducesTargetHealth() {
-        Character attacker = new Character();
-        Character target = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
 
         attacker.dealDamage(target, 100);
 
@@ -39,8 +39,8 @@ class CharacterTest {
 
     @Test
     void damageExceedingHealthKillsTarget() {
-        Character attacker = new Character();
-        Character target = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
 
         attacker.dealDamage(target, 1500);
 
@@ -50,8 +50,8 @@ class CharacterTest {
 
     @Test
     void healingIncreasesTargetHealth() {
-        Character attacker = new Character();
-        Character hero = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character hero = Character.createMeleeFighter();
         attacker.dealDamage(hero, 300);
 
         hero.heal(hero, 100);
@@ -61,8 +61,8 @@ class CharacterTest {
 
     @Test
     void healingCannotExceedMaxHealth() {
-        Character attacker = new Character();
-        Character hero = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character hero = Character.createMeleeFighter();
         attacker.dealDamage(hero, 50);
 
         hero.heal(hero, 200);
@@ -72,8 +72,8 @@ class CharacterTest {
 
     @Test
     void deadCharacterCannotBeHealed() {
-        Character attacker = new Character();
-        Character hero = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character hero = Character.createMeleeFighter();
         attacker.dealDamage(hero, 1500);
 
         hero.heal(hero, 100);
@@ -84,7 +84,7 @@ class CharacterTest {
 
     @Test
     void characterCannotDealDamageToItself() {
-        Character hero = new Character();
+        Character hero = Character.createMeleeFighter();
 
         hero.dealDamage(hero, 100);
 
@@ -93,8 +93,8 @@ class CharacterTest {
 
     @Test
     void characterCanOnlyHealItself() {
-        Character healer = new Character();
-        Character target = new Character();
+        Character healer = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
         healer.dealDamage(target, 300);
 
         healer.heal(target, 100);
@@ -105,7 +105,7 @@ class CharacterTest {
 
     @Test
     void levelUpIncreasesCharacterLevel() {
-        Character hero = new Character();
+        Character hero = Character.createMeleeFighter();
 
         hero.levelUp();
 
@@ -114,8 +114,8 @@ class CharacterTest {
 
     @Test
     void damageIsReducedWhenTargetIsFiveOrMoreLevelsAbove() {
-        Character attacker = new Character();
-        Character target = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
         for (int i = 0; i < 5; i++) {
             target.levelUp();
         }
@@ -127,8 +127,8 @@ class CharacterTest {
 
     @Test
     void damageIsIncreasedWhenTargetIsFiveOrMoreLevelsBelow() {
-        Character attacker = new Character();
-        Character target = new Character();
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
         for (int i = 0; i < 5; i++) {
             attacker.levelUp();
         }
@@ -136,6 +136,14 @@ class CharacterTest {
         attacker.dealDamage(target, 100);
 
         assertThat(target.getHealth(), is(850));
+    }
+
+    @Test
+    void meleeFighterHasARangeOfTwoMeters() {
+        Character hero = Character.createMeleeFighter();
+
+        assertThat(hero.getRange(), is(2));
+
     }
 
 }
