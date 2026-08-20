@@ -173,4 +173,14 @@ class CharacterTest {
         assertThat(target.getHealth(), is(1000));
     }
 
+    @Test
+    void dealingDamageAtExactMaxRangeAppliesDamage() {
+        Character attacker = Character.createRangedFighter();
+        Character target = Character.createRangedFighter();
+
+        attacker.dealDamage(target, 100, 20);
+
+        assertThat(target.getHealth(), is(900));
+    }
+
 }
