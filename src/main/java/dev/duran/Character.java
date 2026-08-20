@@ -48,4 +48,8 @@ public class Character {
 
     }
 
+    public void levelUp() {
+        level++;
+    }
+
 }

@@ -103,4 +103,13 @@ class CharacterTest {
 
     }
 
+    @Test
+    void levelUpIncreasesCharacterLevel() {
+        Character hero = new Character();
+
+        hero.levelUp();
+
+        assertThat(hero.getLevel(), is(2));
+    }
+
 }
