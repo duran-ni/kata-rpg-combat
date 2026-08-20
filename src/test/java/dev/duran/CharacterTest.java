@@ -163,4 +163,14 @@ class CharacterTest {
         assertThat(target.getHealth(), is(900));
     }
 
+    @Test
+    void dealingDamageOutOfRangeHasNoEffect() {
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
+
+        attacker.dealDamage(target, 100, 5);
+
+        assertThat(target.getHealth(), is(1000));
+    }
+
 }
