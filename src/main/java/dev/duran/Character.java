@@ -40,7 +40,15 @@ public class Character {
     }
 
     public void dealDamage(Character target, int damage) {
+        dealDamage(target, damage, 0);
+    }
+
+    public void dealDamage(Character target, int damage, int distance) {
         if (this == target) {
+            return;
+        }
+
+        if (distance > this.range) {
             return;
         }
 

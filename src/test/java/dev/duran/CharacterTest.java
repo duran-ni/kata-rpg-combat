@@ -146,4 +146,21 @@ class CharacterTest {
 
     }
 
+    @Test
+    void rangedFighterHasARangeOfTwentyMeters() {
+        Character archer = Character.createRangedFighter();
+
+        assertThat(archer.getRange(), is(20));
+    }
+
+    @Test
+    void dealingDamageWithinRangeAppliesDamage() {
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
+
+        attacker.dealDamage(target, 100, 2);
+
+        assertThat(target.getHealth(), is(900));
+    }
+
 }
