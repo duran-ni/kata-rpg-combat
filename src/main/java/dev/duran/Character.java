@@ -19,6 +19,10 @@ public class Character {
     }
 
     public void dealDamage(Character target, int damage) {
+        if (this == target) {
+            return;
+        }
+
         int newHealth = target.health - damage;
 
         if (newHealth <= 0) {
@@ -41,4 +45,3 @@ public class Character {
     }
 
 }
-
