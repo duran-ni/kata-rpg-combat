@@ -50,37 +50,36 @@ class CharacterTest {
 
     @Test
     void healingIncreasesTargetHealth() {
-        Character healer = new Character();
-        Character target = new Character();
+        Character attacker = new Character();
+        Character hero = new Character();
+        attacker.dealDamage(hero, 300);
 
-        healer.dealDamage(target, 300);
+        hero.heal(hero, 100);
 
-        healer.heal(target, 100);
-
-        assertThat(target.getHealth(), is(800));
+        assertThat(hero.getHealth(), is(800));
     }
 
     @Test
     void healingCannotExceedMaxHealth() {
-        Character healer = new Character();
-        Character target = new Character();
-        healer.dealDamage(target, 50);
+        Character attacker = new Character();
+        Character hero = new Character();
+        attacker.dealDamage(hero, 50);
 
-        healer.heal(target, 200);
+        hero.heal(hero, 200);
 
-        assertThat(target.getHealth(), is(1000));
+        assertThat(hero.getHealth(), is(1000));
     }
 
     @Test
     void deadCharacterCannotBeHealed() {
-        Character healer = new Character();
-        Character target = new Character();
-        healer.dealDamage(target, 1500);
+        Character attacker = new Character();
+        Character hero = new Character();
+        attacker.dealDamage(hero, 1500);
 
-        healer.heal(target, 100);
+        hero.heal(hero, 100);
 
-        assertThat(target.getHealth(), is(0));
-        assertThat(target.isAlive(), is(false));
+        assertThat(hero.getHealth(), is(0));
+        assertThat(hero.isAlive(), is(false));
     }
 
     @Test
@@ -90,6 +89,18 @@ class CharacterTest {
         hero.dealDamage(hero, 100);
 
         assertThat(hero.getHealth(), is(1000));
+    }
+
+    @Test
+    void characterCanOnlyHealItself() {
+        Character healer = new Character();
+        Character target = new Character();
+        healer.dealDamage(target, 300);
+
+        healer.heal(target, 100);
+
+        assertThat(target.getHealth(), is(700));
+
     }
 
 }

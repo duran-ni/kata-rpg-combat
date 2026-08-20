@@ -35,6 +35,10 @@ public class Character {
     }
 
     public void heal(Character target, int amount) {
+        if (this != target) {
+            return;
+        }
+
         if (!target.alive) {
             return;
         }
