@@ -190,4 +190,13 @@ class CharacterTest {
         assertThat(hero.isInFaction("Vikings"), is(false));
     }
 
+    @Test
+    void characterCanJoinAFaction() {
+        Character hero = Character.createMeleeFighter();
+
+        hero.joinFaction("Vikings");
+
+        assertThat(hero.isInFaction("Vikings"), is(true));
+    }
+
 }

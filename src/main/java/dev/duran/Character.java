@@ -43,6 +43,10 @@ public class Character {
         return factions.contains(factionName);
     }
 
+    public void joinFaction(String factionName) {
+        factions.add(factionName);
+    }
+
     public void levelUp() {
         level++;
     }
