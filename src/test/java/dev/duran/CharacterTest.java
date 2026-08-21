@@ -221,4 +221,18 @@ class CharacterTest {
         assertThat(target.getHealth(), is(1000));
     }
 
+    @Test
+    void alliesCanHealEachOther() {
+        Character attacker = Character.createMeleeFighter();
+        Character healer = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
+        target.joinFaction("Vikings");
+        healer.joinFaction("Vikings");
+        attacker.dealDamage(target, 300, 2);
+
+        healer.heal(target, 100);
+
+        assertThat(target.getHealth(), is(800));
+    }
+
 }
