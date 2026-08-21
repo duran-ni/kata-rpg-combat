@@ -209,4 +209,16 @@ class CharacterTest {
         assertThat(hero.isInFaction("Vikings"), is(false));
     }
 
+    @Test
+    void alliesCannotDealDamageToEachOther() {
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
+        attacker.joinFaction("Vikings");
+        target.joinFaction("Vikings");
+
+        attacker.dealDamage(target, 100, 2);
+
+        assertThat(target.getHealth(), is(1000));
+    }
+
 }

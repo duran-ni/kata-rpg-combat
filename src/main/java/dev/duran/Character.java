@@ -51,6 +51,15 @@ public class Character {
         factions.remove(factionName);
     }
 
+    public boolean isAllyOf(Character other) {
+        for (String faction : this.factions) {
+            if (other.factions.contains(faction)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void levelUp() {
         level++;
     }
@@ -61,6 +70,10 @@ public class Character {
 
     public void dealDamage(Character target, int damage, int distance) {
         if (this == target) {
+            return;
+        }
+
+        if (this.isAllyOf(target)) {
             return;
         }
 
