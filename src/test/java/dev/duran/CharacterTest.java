@@ -246,4 +246,16 @@ class CharacterTest {
         assertThat(hero.isInFaction("Rebels"), is(true));
     }
 
+    @Test
+    void charactersInDifferentFactionsAreNotAllies() {
+        Character attacker = Character.createMeleeFighter();
+        Character target = Character.createMeleeFighter();
+        attacker.joinFaction("Vikings");
+        target.joinFaction("Rebels");
+
+        attacker.dealDamage(target, 100, 2);
+
+        assertThat(target.getHealth(), is(900));
+    }
+
 }
