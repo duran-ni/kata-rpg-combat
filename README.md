@@ -2,6 +2,13 @@
 
 ## 🔍 Índice
 
+- [Descripción](#-descripción)
+- [Tecnologías utilizadas](#-tecnologías-utilizadas)
+- [Instalación](#%EF%B8%8F-instalación)
+- [Estructura de carpetas](#-estructura-de-carpetas)
+- [Capturas](#-capturas)
+- [Autora](#%EF%B8%8F-autora)
+
 ---
 
 ## 📝 Descripción
@@ -41,15 +48,41 @@ Ejecución de los tests:
 ```bash
 mvn test
 ```
+
+Tras ejecutar los tests, el informe de cobertura de JaCoCo se genera automáticamente en `target/site/jacoco/index.html`, y se puede abrir directamente en el navegador.
 ---
 
 ## 📁 Estructura de carpetas
 
 ```
-
+kata-rpg-combat/
+├── docs/
+│   ├── tests-coverage.png
+│   └── tests-verde.png
+├── src/
+│   ├── main/java/dev/duran/
+│   │   ├── Character.java
+│   │   ├── Combatant.java
+│   │   ├── FighterType.java
+│   │   └── Prop.java
+│   └── test/java/dev/duran/
+│       ├── CharacterTest.java
+│       └── PropTest.java
+├── .editorconfig
+├── .gitignore
+├── pom.xml
+└── README.md
 ```
 
 ## 📷 Capturas
+
+### Cobertura de tests con JaCoCo
+
+![Cobertura de tests](docs/tests-coverage.png)
+
+### Tests en verde
+
+![Tests en verde](docs/tests-verde.png)
 
 ---
 
