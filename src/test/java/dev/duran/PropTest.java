@@ -24,4 +24,15 @@ class PropTest {
         assertThat(tree.getHealth(), is(1500));
     }
 
+    @Test
+    void propIsDestroyedWhenHealthReachesZero() {
+        Character attacker = Character.createMeleeFighter();
+        Prop tree = new Prop(2000);
+
+        attacker.dealDamage(tree, 2500, 2);
+
+        assertThat(tree.getHealth(), is(0));
+        assertThat(tree.isAlive(), is(false));
+    }
+
 }
