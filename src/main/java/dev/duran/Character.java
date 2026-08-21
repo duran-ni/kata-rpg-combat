@@ -3,15 +3,14 @@ package dev.duran;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Character {
+public class Character extends Combatant {
 
-    private int health = 1000;
     private int level = 1;
-    private boolean alive = true;
     private final int range;
     private final Set<String> factions = new HashSet<>();
 
     private Character(FighterType fighterType) {
+        super(1000);
         this.range = fighterType == FighterType.MELEE ? 2 : 20;
     }
 
@@ -23,16 +22,8 @@ public class Character {
         return new Character(FighterType.RANGED);
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public int getLevel() {
         return level;
-    }
-
-    public boolean isAlive() {
-        return alive;
     }
 
     public int getRange() {
@@ -88,15 +79,7 @@ public class Character {
             actualDamage = damage + (damage / 2);
         }
 
-        int newHealth = target.health - actualDamage;
-
-        if (newHealth <= 0) {
-            target.health = 0;
-            target.alive = false;
-        } else {
-            target.health = newHealth;
-
-        }
+        target.reduceHealth(actualDamage);
     }
 
     public void heal(Character target, int amount) {
@@ -104,12 +87,11 @@ public class Character {
             return;
         }
 
-        if (!target.alive) {
+        if (!target.isAlive()) {
             return;
         }
 
-        int newHealth = target.health + amount;
-        target.health = Math.min(newHealth, 1000);
+        target.increaseHealth(amount, 1000);
 
     }
 
