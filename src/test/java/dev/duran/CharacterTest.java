@@ -235,4 +235,15 @@ class CharacterTest {
         assertThat(target.getHealth(), is(800));
     }
 
+    @Test
+    void characterCanBelongToMultipleFactionsAtOnce() {
+        Character hero = Character.createMeleeFighter();
+
+        hero.joinFaction("Vikings");
+        hero.joinFaction("Rebels");
+
+        assertThat(hero.isInFaction("Vikings"), is(true));
+        assertThat(hero.isInFaction("Rebels"), is(true));
+    }
+
 }
