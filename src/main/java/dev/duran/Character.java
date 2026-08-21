@@ -47,6 +47,10 @@ public class Character {
         factions.add(factionName);
     }
 
+    public void leaveFaction(String factionName) {
+        factions.remove(factionName);
+    }
+
     public void levelUp() {
         level++;
     }
