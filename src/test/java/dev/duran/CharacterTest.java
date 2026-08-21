@@ -183,4 +183,11 @@ class CharacterTest {
         assertThat(target.getHealth(), is(900));
     }
 
+    @Test
+    void newCharacterBelongsToNoFaction() {
+        Character hero = Character.createMeleeFighter();
+
+        assertThat(hero.isInFaction("Vikings"), is(false));
+    }
+
 }

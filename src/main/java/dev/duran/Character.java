@@ -1,11 +1,15 @@
 package dev.duran;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Character {
 
     private int health = 1000;
     private int level = 1;
     private boolean alive = true;
     private final int range;
+    private final Set<String> factions = new HashSet<>();
 
     private Character(FighterType fighterType) {
         this.range = fighterType == FighterType.MELEE ? 2 : 20;
@@ -35,6 +39,10 @@ public class Character {
         return range;
     }
 
+    public boolean isInFaction(String factionName) {
+        return factions.contains(factionName);
+    }
+
     public void levelUp() {
         level++;
     }
@@ -53,9 +61,9 @@ public class Character {
         }
 
         int actualDamage = damage;
-        if (target.level - this.level >=5) {
+        if (target.level - this.level >= 5) {
             actualDamage = damage / 2;
-        } else if (this.level - target.level >=5) {
+        } else if (this.level - target.level >= 5) {
             actualDamage = damage + (damage / 2);
         }
 
@@ -83,6 +91,5 @@ public class Character {
         target.health = Math.min(newHealth, 1000);
 
     }
-
 
 }
