@@ -64,7 +64,7 @@ public class Character extends Combatant {
             return;
         }
 
-        if (this.isAllyOf(target)) {
+        if (target instanceof Character && this.isAllyOf((Character) target)) {
             return;
         }
 
@@ -73,10 +73,13 @@ public class Character extends Combatant {
         }
 
         int actualDamage = damage;
-        if (target.level - this.level >= 5) {
-            actualDamage = damage / 2;
-        } else if (this.level - target.level >= 5) {
-            actualDamage = damage + (damage / 2);
+        if (target instanceof Character) {
+            Character characterTarget = (Character) target;
+            if (characterTarget.level - this.level >= 5) {
+                actualDamage = damage / 2;
+            } else if (this.level - characterTarget.level >= 5) {
+                actualDamage = damage + (damage / 2);
+            }
         }
 
         target.reduceHealth(actualDamage);
