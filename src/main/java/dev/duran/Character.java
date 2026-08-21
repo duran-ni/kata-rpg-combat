@@ -55,11 +55,11 @@ public class Character extends Combatant {
         level++;
     }
 
-    public void dealDamage(Character target, int damage) {
+    public void dealDamage(Combatant target, int damage) {
         dealDamage(target, damage, 0);
     }
 
-    public void dealDamage(Character target, int damage, int distance) {
+    public void dealDamage(Combatant target, int damage, int distance) {
         if (this == target) {
             return;
         }

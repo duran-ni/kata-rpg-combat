@@ -13,4 +13,15 @@ class PropTest {
         assertThat(tree.getHealth(), is(2000));
         assertThat(tree.isAlive(), is(true));
     }
+
+    @Test
+    void propCanBeDamagedByCharacter() {
+        Character attacker = Character.createMeleeFighter();
+        Prop tree = new Prop(2000);
+
+        attacker.dealDamage(tree, 500, 2);
+
+        assertThat(tree.getHealth(), is(1500));
+    }
+
 }
